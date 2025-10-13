@@ -1,0 +1,52 @@
+---
+
+## 🧩 **JavaScript Object Literals — Notes**
+
+### 🔹 **Basics**
+
+- Created using `{}`
+- Stores **key-value pairs**
+- Keys: string or symbol, Values: any type
+- **Reference type** → modifying affects original
+
+```jsx
+const user = { name: "Sahil", age: 25, isAdmin: true };
+
+```
+
+### **interview question**
+
+use **Symbol** data type as a key in Objects and print it
+
+```jsx
+const mySym = Symbol("key1")
+
+const JsUser = {
+    [mySym]: "mykey1"----->correct (typeof mysym =string)
+        or
+    mysym:"mykey1" -------->wrong (typeof mysym =string)
+}
+console.log(JsUser[mySym])
+```
+
+**String Keys**
+
+- By default, **all object keys are converted to strings** (unless it’s a Symbol).
+
+```jsx
+const obj = { 1: "one", true: "yes" ,
+null: hello };
+console.log(obj);
+//here null is treated as "null" 
+// { "1": "one", "true": "yes" }
+```
+
+### 🔹 **Utility Methods**
+
+```jsx
+Object.keys(user);   // all keys
+Object.values(user); // all values
+Object.entries(user);// key-value pairs
+Object.assign({}, user); // copy/merge
+
+```
