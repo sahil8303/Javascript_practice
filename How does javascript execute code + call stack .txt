@@ -1,0 +1,148 @@
+⚙️ How JavaScript Executes Code
+
+JavaScript is a synchronous, single-threaded language,
+which means it executes one line of code at a time — in a single main thread.
+
+But internally, it uses something called the Execution Context and the Call Stack to manage how code runs.
+
+🧠 1. Execution Context
+
+An Execution Context is like a box or environment where a piece of code runs.
+
+There are two main types:
+
+Global Execution Context (GEC) – created when the JS program starts.
+
+Function Execution Context (FEC) – created whenever a function is called.
+
+Each execution context has two phases:
+
+🔹 a. Memory (Creation) Phase
+
+JS engine scans the code.
+
+It allocates memory for variables and functions.
+
+Variables → undefined
+
+Functions → full definition stored
+
+🔹 b. Execution Phase
+
+Code is executed line by line.
+
+Variable values are assigned.
+
+Functions are invoked (creating new contexts).
+
+📘 2. Global Execution Context (GEC)
+
+When you run a JS file:
+
+var name = "Hitesh";
+function greet() {
+  console.log("Hello", name);
+}
+greet();
+
+
+The JS engine first creates the Global Execution Context.
+
+In Memory Phase:
+
+name → undefined
+greet → function definition
+
+
+In Execution Phase:
+
+name = "Hitesh"
+greet() is called → creates new Function Execution Context
+
+🔁 3. Function Execution Context (FEC)
+
+When a function is called, JavaScript creates a new Function Execution Context for it.
+
+Example:
+
+function greet() {
+  let msg = "Hello Hitesh";
+  console.log(msg);
+}
+greet();
+
+
+JS creates a new context for greet()
+
+It goes through its own memory and execution phases
+
+When done, it returns control to the global context and its context is removed
+
+🧱 4. Call Stack
+
+The Call Stack (also called the Execution Stack) is a stack data structure that keeps track of all execution contexts in the order they need to run.
+
+Think of it as a pile of plates —
+new plates (functions) go on top, and once finished, are taken off (LIFO — Last In, First Out).
+
+🔹 Example:
+function one() {
+  console.log("One");
+  two();
+}
+
+function two() {
+  console.log("Two");
+  three();
+}
+
+function three() {
+  console.log("Three");
+}
+
+one();
+
+🔸 Step-by-step (Call Stack):
+Step	Action	Call Stack
+1	JS starts	Global()
+2	one() called	Global → one()
+3	Inside one(), two() called	Global → one() → two()
+4	Inside two(), three() called	Global → one() → two() → three()
+5	three() finishes	three() popped
+6	two() finishes	two() popped
+7	one() finishes	one() popped
+8	Program ends	Global context removed
+
+✅ Output:
+
+One
+Two
+Three
+
+🧩 5. Call Stack Visualization
+Top → three()   ← running now
+      two()
+      one()
+Bottom → Global()
+
+
+As each function completes, it’s popped off the stack until only the Global Execution Context remains.
+
+⚡ 6. When Does the Call Stack Clear?
+
+When all code is executed and all functions return.
+
+At that point, the Call Stack becomes empty.
+
+JS then waits for any asynchronous callbacks (handled by the event loop) — but that’s part of the asynchronous model, not the main call stack itself.
+
+📝 7. Summary
+Concept	Description
+Single-threaded	JS executes one thing at a time
+Execution Context	Environment where code runs
+Global Execution Context	Default context for entire file
+Function Execution Context	Created whenever a function is invoked
+Memory Phase	Variables → undefined, Functions → definition
+Execution Phase	Code runs line by line
+Call Stack	Keeps track of which function is currently executing
+LIFO Principle	Last function called → first to finish
