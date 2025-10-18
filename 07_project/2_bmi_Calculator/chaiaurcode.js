@@ -1,3 +1,4 @@
+const form = document.querySelector('form');
 form.addEventListener('submit',function(e){
     e.preventDefault();
 
@@ -18,7 +19,18 @@ form.addEventListener('submit',function(e){
      else{
         const bmi=(weight/((height*height)/10000)).toFixed(2);
         //show the result
-        results.innerHTML=`<span>your bmi is ${bmi}</span>`;
+        
+        let category='';
+        if(bmi<18.6)category="Under Weight";
+
+        else if(bmi>18.6 && bmi<24.9)category="Normal Range";
+
+        else{
+            category="OverWeight";
+        }
+
+      results.innerHTML=`<span>Your bmi is ${bmi} (${category})</span>`;
+
      }
 });
 
