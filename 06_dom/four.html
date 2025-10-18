@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai AUr Code | DOM</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color:#fff
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+    
+</body>
+
+<script>
+//pura tree travererse karta he so not optimized way for large projects so use "appendChild" insetad of "innerHTML"
+    function addLanguage(langName){
+
+        const li=document.createElement('li');
+        li.innerHTML=`${langName}`
+        document.querySelector('.language').appendChild(li);
+        
+    }
+
+    addLanguage("python");
+    addLanguage("typescript");
+
+    function addOptLanguage(langName){
+        const li=document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addOptLanguage("golang")
+
+
+    //EDIT
+
+    const secondLang=document.querySelector("li:nth-child(2)")
+    // second.innerHTML="Mojo"
+    //optimized
+    const newli=document.createElement('li')
+    newli.textContent="Mojo"
+
+    secondLang.replaceWith(newli);
+
+    //EDIT ex2--change Javacript language to typescript in list
+    const firstLang=document.querySelector("li:first-child");
+
+    firstLang.outerHTML='<li>TypeScript</li>'
+
+    //REMOVE EX-golange language in list ko hatao
+     
+    const LastLang=document.querySelector('li:last-child')
+    LastLang.remove()
+
+</script>
+</html>
