@@ -1,21 +1,24 @@
-const insert=document.querySelector('#insert')
+const insert = document.querySelector('#insert');
 
-window.addEventListener('keydown',(e)=>{
-    insert.innerHTML=`
-      <div class="table">
-      <table>
-  <tr>
-    <th>Key</th>
-    <th>KeyCode</th>
-    <th>Code</th>
-  </tr>
-  <tr>
-    <td>${e.key===" "?"Space":e.key}</td>
+let tableHTML = `
+  <table border="1" style="color:white; text-align:center;">
+    <tr>
+      <th>Key</th>
+      <th>KeyCode</th>
+      <th>Code</th>
+    </tr>
+  </table>
+`;
+
+insert.innerHTML = tableHTML;
+const table = insert.querySelector('table');
+
+window.addEventListener('keydown', (e) => {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${e.key === " " ? "Space" : e.key}</td>
     <td>${e.keyCode}</td>
     <td>${e.code}</td>
-  </tr>
-
-</table>
-      </div>
-    `
-})
+  `;
+  table.appendChild(row); // 👈 Adds new row instead of replacing
+});
