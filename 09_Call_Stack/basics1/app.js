@@ -5,9 +5,11 @@ function one(){
 function two(){
     return one()+one();
 }
+
 function three(){
-    let ans=two()+one();
+    debugger;    // <-- add this to force debugger pause
+    let ans = two() + one();
     console.log(ans);
-    
 }
+
 three();
