@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Data</title>
+    <style>
+        table ,tr,td{
+            border:1px solid black;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:black;"><u>Users Data</u></h1>
+   
+        <table>
+            <tr>
+                <th>User ID:</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+             <%for(data of result){%>
+            <tr>
+               
+                <td><%= data.id%></td>
+                <td><%= data.username%></td>
+                <td><%= data.email%></td>
+                <td>
+<form method="GET" action="/user/<%= data.id%>/edit">
+                     <button>Edit form</button>
+                </form>
+                </td>
+                
+                
+            </tr>
+             <% }%>
+        </table>
+    
+</body>
+</html>
+
+
