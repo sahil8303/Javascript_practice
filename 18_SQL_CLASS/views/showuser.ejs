@@ -12,7 +12,11 @@
     </style>
 </head>
 <body>
-    <h1 style="color:black;"><u>Users Data</u></h1>
+    <h1 style="color:black;"><u>Users Data</u></h1> 
+     <form method="get" action="/user/add">
+          <Button>Add User</Button>
+     </form>
+    
    
         <table>
             <tr>
@@ -29,6 +33,12 @@
                 <td>
 <form method="GET" action="/user/<%= data.id%>/edit">
                      <button>Edit form</button>
+                </form>
+               
+                </td>
+                <td>
+                <form method="get" action="/user/<%= data.id%>/delete">
+                     <button>Delete form</button>
                 </form>
                 </td>
                 

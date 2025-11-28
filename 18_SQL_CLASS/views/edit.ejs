@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit user</title>
+  <meta charset="UTF-8">
+  <title>Edit User</title>
+  <style>
+    form{
+      display:flex;
+      flex-direction:column;
+      width:300px;
+      gap:10px;
+    }
+    input{
+      padding:8px;
+      font-size:15px;
+    }
+    button{
+      padding:10px;
+      background:blue;
+      color:white;
+      border:none;
+      cursor:pointer;
+    }
+  </style>
 </head>
 <body>
-    <h2>You are about to edit this user : <%=user.email%></h2>
-    <form method="post" action="/user/<%=user.id%>?_method=PATCH">
-        <textarea name="username" ><%=user.usernamee%></textarea>
-        <input type="password" name="password" placeholder="password">
-        <button>Edit</button>
-    </form>
-    
+
+  <h2>Edit User: <%= user.email %></h2>
+
+  <form method="post" action="/user/<%= user.id %>?_method=PATCH">
+    <label>Username:</label>
+    <input type="text" name="username" value="<%= user.username %>">
+
+    <label>Enter Password to Confirm:</label>
+    <input type="password" name="password" placeholder="Enter current password">
+
+    <button>Save Changes</button>
+  </form>
+
 </body>
 </html>

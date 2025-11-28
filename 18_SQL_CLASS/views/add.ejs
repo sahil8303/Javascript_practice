@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New User</title>
+  <style>
+    form{
+      display:flex;
+      flex-direction:column;
+      width:300px;
+      gap:10px;
+    }
+    input{
+      padding:8px;
+      font-size:15px;
+    }
+    button{
+      padding:10px;
+      background:green;
+      color:white;
+      border:none;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add New User</h2>
+
+  <form method="post" action="/user/add">
+    <input type="text"   name="username" placeholder="Enter username" required>
+    <input type="email"  name="email"    placeholder="Enter email"    required>
+    <input type="password" name="password" placeholder="Enter password" required>
+
+    <button>Add User</button>
+  </form>
+
+</body>
+</html>
