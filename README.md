@@ -1,2 +1,2 @@
 # Javascript_practice
-A code repo for javascript series at chai and code 
+A code repo for javascript series at chai and code & Apna College
